@@ -8,6 +8,7 @@ public class StartDriver {
 	
 	public WebDriver startDriver()
 	{
+		int i=0;
 		return driver;
 		
 	}
