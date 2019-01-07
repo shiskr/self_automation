@@ -6,10 +6,10 @@ public class StartDriver {
 	
 	WebDriver driver;
 	
-	public WebDriver startDriver()
+	public WebDriver startDriver(String browser)
 	{
-		int i=0;
-		int j=0;
+		
+		
 		return driver;
 		
 		
