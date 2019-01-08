@@ -14,7 +14,7 @@ public class ReadConfig {
 		
 //		System.out.println(manager.getProperty1("browser"));
 		ConfigManager.setProperties();
-		System.out.println(ConfigManager.getProperties().getProperty("url"));
+		System.out.println(ConfigManager.getProperties().getProperty("browser"));
 //		System.out.println(System.getProperty("user.dir"));
 
 	}

@@ -1,9 +1,14 @@
 package tests;
 
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
+
+import utilities.ConfigManager;
+import utilities.StartDriver;
 
 public class BaseTest {
 	
@@ -12,15 +17,32 @@ public class BaseTest {
 	{
 		
 	}
-	
-	@BeforeTest
-	public void beforeTest()
+	@BeforeClass
+	public void beforeClass()
 	{
 		
 	}
 	
+	@BeforeTest
+	public void beforeTest()
+	{
+		try {
+			ConfigManager.setProperties();
+			new StartDriver().startDriver(ConfigManager.getProperties().getProperty("browser"));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	@AfterTest
 	public void afterTest()
+	{
+		
+	}
+	
+	@AfterClass
+	public void afterClass()
 	{
 		
 	}
