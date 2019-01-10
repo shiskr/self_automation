@@ -7,6 +7,6 @@ public class Test1 extends BaseTest{
 	@Test(enabled=true)
 	public void test1()
 	{
-		System.out.println("TEST RUN");
+		
 	}
 }
