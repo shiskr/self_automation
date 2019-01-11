@@ -10,6 +10,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.safari.SafariDriver;
+import io.github.bonigarcia.wdm.WebDriverManager;;
 
 public class StartDriver {
 
@@ -52,7 +53,8 @@ public class StartDriver {
 			{
 				chromeDriverPath = System.getProperty("user.dir") + "/resources/chromedriver";
 			}
-			System.setProperty("webdriver.chrome.driver", chromeDriverPath);
+//			System.setProperty("webdriver.chrome.driver", chromeDriverPath);
+			WebDriverManager.chromedriver().setup();
 
 			// legacy process
 			//			driver = new ChromeDriver(chromeDC);
@@ -94,7 +96,8 @@ public class StartDriver {
 				firefoxDriverPath = System.getProperty("user.dir") + "/resources/geckodriver";
 			}
 
-			System.setProperty("webdriver.gecko.driver", firefoxDriverPath);
+//			System.setProperty("webdriver.gecko.driver", firefoxDriverPath);
+			WebDriverManager.firefoxdriver().setup();
 			firefoxOptions.merge(firefoxDC);
 			driver = new FirefoxDriver(firefoxOptions);
 

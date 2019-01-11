@@ -20,12 +20,6 @@ public class BaseTest {
 	@BeforeClass
 	public void beforeClass()
 	{
-		
-	}
-	
-	@BeforeTest
-	public void beforeTest()
-	{
 		try {
 			ConfigManager.setProperties();
 			new StartDriver().startDriver(ConfigManager.getProperties().getProperty("browser"));
@@ -33,6 +27,12 @@ public class BaseTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	@BeforeTest
+	public void beforeTest()
+	{
+		
 	}
 	
 	@AfterTest
