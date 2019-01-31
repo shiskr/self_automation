@@ -1,5 +1,6 @@
 package tests;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterSuite;
@@ -14,6 +15,9 @@ import utilities.ConfigManager;
 import utilities.StartDriver;
 
 public class BaseTest {
+
+	static Logger logger = Logger.getLogger(BaseTest.class.getName());
+
 	public static WebDriver driver;
 	SearchPage searchPage;
 	ArticlePage articlePage;

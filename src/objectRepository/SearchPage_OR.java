@@ -2,6 +2,7 @@ package objectRepository;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,6 +10,8 @@ import org.openqa.selenium.support.FindBy;
 import pages.BasePage;
 
 public class SearchPage_OR extends BasePage{
+
+	static Logger logger = Logger.getLogger(SearchPage_OR.class.getName());
 
 	protected static WebDriver driver;
 

@@ -1,5 +1,6 @@
 package utilities;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
@@ -12,6 +13,8 @@ import org.openqa.selenium.safari.SafariDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;;
 
 public class StartDriver {
+
+	static Logger logger = Logger.getLogger(StartDriver.class.getName());
 
 	static WebDriver driver;
 	static ChromeOptions chromeOptions;

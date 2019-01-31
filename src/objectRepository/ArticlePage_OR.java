@@ -1,5 +1,6 @@
 package objectRepository;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -7,6 +8,8 @@ import org.openqa.selenium.support.FindBy;
 import pages.BasePage;
 
 public class ArticlePage_OR extends BasePage{
+	
+	static Logger logger = Logger.getLogger(ArticlePage_OR.class.getName());
 
 	public ArticlePage_OR(WebDriver driver) {
 		super(driver);
