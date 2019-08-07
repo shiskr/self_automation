@@ -1,0 +1,4 @@
+1. login with an user and check if the user after login is directed to account information page.
+2. purchase flow:
+	a. 
+	b. 
