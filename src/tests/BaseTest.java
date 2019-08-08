@@ -17,6 +17,7 @@ import pages.HomePage;
 import pages.JoinFormPage;
 import pages.LocationsPage;
 import pages.LoginPage;
+import pages.RegistrationBridgePage;
 import pages.SearchPage;
 import pages.WelcomePage;
 import utilities.ConfigManager;
@@ -37,6 +38,7 @@ public class BaseTest {
 	LocationsPage locationPage;
 	FacilityPage facilityPage;
 	JoinFormPage joinFormPage;
+	RegistrationBridgePage registrationBridgePage;
 
 	@BeforeSuite
 	public void beforeSuite()

@@ -1,31 +1,31 @@
 package tests;
 
-import org.testng.annotations.DataProvider;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import pages.FacilityPage;
+import utilities.ConfigManager;
 
 public class Test1 extends BaseTest{
-	
-//	@DataProvider(name = "userinfo")
-//	public static Object[][] catalog()
-//	{
-//		return new Object[][]
-//				{
-//			{"english", 1, "erjtv", 23423, "2d2c3"},
-//			{"french", 2, "w4rcwre", 234, "2c234"}
-//				};
-//	}
-//	
-//	@DataProvider(name = "Catalog2")
-//	public static Object[][] catalog2()
-//	{
-//		return new Object[][]
-//				{
-//			{"english", 1},
-//			{"french", 2}
-//				};
-//	}
+
+	//	@DataProvider(name = "userinfo")
+	//	public static Object[][] catalog()
+	//	{
+	//		return new Object[][]
+	//				{
+	//			{"english", 1, "erjtv", 23423, "2d2c3"},
+	//			{"french", 2, "w4rcwre", 234, "2c234"}
+	//				};
+	//	}
+	//	
+	//	@DataProvider(name = "Catalog2")
+	//	public static Object[][] catalog2()
+	//	{
+	//		return new Object[][]
+	//				{
+	//			{"english", 1},
+	//			{"french", 2}
+	//				};
+	//	}
 
 	@Test(enabled=false)
 	public void LoginScenario()
@@ -36,21 +36,24 @@ public class Test1 extends BaseTest{
 		homePage = loginPage.clickLogin();
 		homePage.verifyLogoutLink();
 	}
-	
+
 	@Test(enabled=true)
-	public void PurchaseScenario()
+	public void PurchaseScenario() throws InterruptedException
 	{
 		locationPage = welcomePage.clickLocationsLink();
 		facilityPage = locationPage.clickFacility();
 		joinFormPage = facilityPage.clickGreyClickHere();
 		joinFormPage.enterMemberDetails();
+		registrationBridgePage = joinFormPage.enterMemberPaymentDetails();
+		registrationBridgePage.verifyEmail();
+		registrationBridgePage.enterPasswords(ConfigManager.getProperties().getProperty("password"));
 	}
-	
-//	@Test
-//	public void membershipPurchase()
-//	{
-//		welcomePage.clickLocationsLink();
-//	}
-	
-	
+
+	//	@Test
+	//	public void membershipPurchase()
+	//	{
+	//		welcomePage.clickLocationsLink();
+	//	}
+
+
 }
