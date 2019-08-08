@@ -1,12 +1,14 @@
 package utilities;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.safari.SafariDriver;
 
@@ -21,13 +23,21 @@ public class StartDriver {
 	static FirefoxOptions firefoxOptions;
 	static String osname = System.getProperty("os.name");
 
-	public WebDriver startDriver(String browser)
+	public WebDriver startDriver(String browser, Proxy proxy)
 	{
 		switch(browser)
 		{
 		case "chrome":
+
+			DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+			capabilities.setCapability("proxy", proxy);
+			capabilities.setCapability(CapabilityType.PROXY, proxy); 
+			capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true); 
+			capabilities.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS,
+			 true); 
 			chromeOptions = new ChromeOptions();
 			chromeOptions.addArguments("disable-infobars");
+			chromeOptions.addArguments("--ignore-certificate-errors"); 
 			//
 			//			// Hide the automation toolbar warning
 			chromeOptions.addArguments("test-type");
@@ -35,6 +45,7 @@ public class StartDriver {
 			chromeOptions.addArguments("disable-popup-blocking");
 			//			// starting browser in maximized screen
 			chromeOptions.addArguments("--start-maximized");
+			chromeOptions.merge(capabilities);
 
 			// System.setProperty("webdriver.chrome.driver", chromeDriverPath);
 			// using webdrivermanager there is no need to keep path of drivers
