@@ -1,5 +1,7 @@
 package pages;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -23,7 +25,7 @@ public class JoinFormPage extends JoinFormPage_OR{
 		wait.until(ExpectedConditions.visibilityOf(firstNameEl));
 	}
 
-	public void enterMemberDetails() {
+	public void enterMemberDetails() throws InterruptedException {
 		enterFirstName(ConfigManager.getProperties().getProperty("firstName"));
 		enterLastName(ConfigManager.getProperties().getProperty("lastName"));
 		enterAddress(ConfigManager.getProperties().getProperty("address"));
@@ -37,6 +39,7 @@ public class JoinFormPage extends JoinFormPage_OR{
 		enterDOB(ConfigManager.getProperties().getProperty("dateofbirth"));
 		selectGender(ConfigManager.getProperties().getProperty("gender"));
 		wait.until(ExpectedConditions.elementToBeClickable(next1El));
+		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS) ;
 		clickNext1();
 		clickNext1();
 	}
@@ -105,7 +108,9 @@ public class JoinFormPage extends JoinFormPage_OR{
 		securityCodeEl.sendKeys(ConfigManager.getProperties().getProperty("securitycode"));
 //		wait.until(ExpectedConditions.elementToBeClickable(agree2El));
 		clickIagree(agree2El);
+		wait.until(ExpectedConditions.elementToBeClickable(purchaseEl));
 		purchaseEl.click();
+		driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS) ;
 		return new RegistrationBridgePage(driver);
 	}
 

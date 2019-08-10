@@ -14,7 +14,7 @@ public class RegistrationBridgePage extends RegistrationBridgePage_OR{
 	public RegistrationBridgePage(WebDriver driver) throws InterruptedException {
 		super(driver);
 		PageFactory.initElements(driver, this);
-		Thread.sleep(1000);
+		Thread.sleep(10000);
 		wait.until(ExpectedConditions.visibilityOf(welcomeEl));
 	}
 
@@ -23,8 +23,14 @@ public class RegistrationBridgePage extends RegistrationBridgePage_OR{
 		Assert.assertTrue(email.equals(ConfigManager.getProperties().getProperty("email")));
 	}
 
-	public void enterPasswords(String property) {
-		
+	public void enterPasswords() {
+		password.sendKeys(ConfigManager.getProperties().getProperty("newPassword"));
+		confirmPassword.sendKeys(ConfigManager.getProperties().getProperty("newPassword"));
+	}
+
+	public HomePage clickCreateAccount() {
+		createAccountBtn.click();
+		return new HomePage(driver);
 	}
 
 }

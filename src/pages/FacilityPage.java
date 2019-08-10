@@ -20,5 +20,9 @@ public class FacilityPage extends FacilityPage_OR{
 		return new JoinFormPage(driver);
 	}
 	
+	public JoinFormPage clickBlueClickHere() throws InterruptedException {
+		blueClickHere.click();
+		return new JoinFormPage(driver);
+	}
 	
 }

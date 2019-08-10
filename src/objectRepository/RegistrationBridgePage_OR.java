@@ -18,5 +18,14 @@ public class RegistrationBridgePage_OR extends BasePage{
 	
 	@FindBy(id="email")
 	public WebElement emailFieldEl;
+	
+	@FindBy(id="password")
+	public WebElement password;
+	
+	@FindBy(id="confirmPassword")
+	public WebElement confirmPassword;
+	
+	@FindBy(xpath="//button[contains(text(),' Create Account ')]")
+	public WebElement createAccountBtn;
 
 }

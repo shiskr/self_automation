@@ -16,16 +16,6 @@ public class Test1 extends BaseTest{
 	//			{"french", 2, "w4rcwre", 234, "2c234"}
 	//				};
 	//	}
-	//	
-	//	@DataProvider(name = "Catalog2")
-	//	public static Object[][] catalog2()
-	//	{
-	//		return new Object[][]
-	//				{
-	//			{"english", 1},
-	//			{"french", 2}
-	//				};
-	//	}
 
 	@Test(enabled=false)
 	public void LoginScenario()
@@ -34,7 +24,7 @@ public class Test1 extends BaseTest{
 		loginPage.enterEmail("testgreen20190507webprod@mailinator.com");
 		loginPage.enterPassword("Test@1234");
 		homePage = loginPage.clickLogin();
-		homePage.verifyLogoutLink();
+		homePage.clickLogoutLink();
 	}
 
 	@Test(enabled=true)
@@ -42,18 +32,42 @@ public class Test1 extends BaseTest{
 	{
 		locationPage = welcomePage.clickLocationsLink();
 		facilityPage = locationPage.clickFacility();
-		joinFormPage = facilityPage.clickGreyClickHere();
+		joinFormPage = facilityPage.clickBlueClickHere();
 		joinFormPage.enterMemberDetails();
 		registrationBridgePage = joinFormPage.enterMemberPaymentDetails();
 		registrationBridgePage.verifyEmail();
-		registrationBridgePage.enterPasswords(ConfigManager.getProperties().getProperty("password"));
+		registrationBridgePage.enterPasswords();
+		homePage = registrationBridgePage.clickCreateAccount();
+		homePage = homePage.clickSkipBtn();
+		loginPage = homePage.clickLogoutLink();
 	}
 
-	//	@Test
-	//	public void membershipPurchase()
-	//	{
-	//		welcomePage.clickLocationsLink();
-	//	}
+	@Test(enabled=false)
+	public void PTPurchase()
+	{
+		
+	}
+
+	@Test(dependsOnMethods= {"PurchaseScenario"})
+	public void passwordChange()
+	{
+		loginPage.enterEmail(ConfigManager.getProperties().getProperty("email"));
+		loginPage.enterPassword(ConfigManager.getProperties().getProperty("newPassword"));
+		homePage = loginPage.clickLogin();
+		homePage.clickMemberInfoTab();
+		homePage.enterCurrentPassword(ConfigManager.getProperties().getProperty("newPassword"));
+		homePage.enterNewPasswords(ConfigManager.getProperties().getProperty("password"));
+		homePage.clickChangePassword();
+		homePage.verifySuccess();
+		
+	}
+
+	@Test(enabled=false)
+	public void membershipDetailsUpdate()
+	{
+		
+	}
+
 
 
 }
