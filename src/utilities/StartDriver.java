@@ -7,8 +7,11 @@ import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.safari.SafariDriver;
+
+import org.openqa.selenium.Proxy;
 
 import io.github.bonigarcia.wdm.WebDriverManager;;
 
@@ -21,12 +24,15 @@ public class StartDriver {
 	static FirefoxOptions firefoxOptions;
 	static String osname = System.getProperty("os.name");
 
-	public WebDriver startDriver(String browser)
+	public WebDriver startDriver(String browser, Proxy proxy)
 	{
 		switch(browser)
 		{
 		case "chrome":
 			chromeOptions = new ChromeOptions();
+			DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+	        capabilities.setCapability("proxy", proxy);
+	        capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
 			chromeOptions.addArguments("disable-infobars");
 			//
 			//			// Hide the automation toolbar warning
@@ -35,7 +41,7 @@ public class StartDriver {
 			chromeOptions.addArguments("disable-popup-blocking");
 			//			// starting browser in maximized screen
 			chromeOptions.addArguments("--start-maximized");
-
+			chromeOptions.merge(capabilities);
 			// System.setProperty("webdriver.chrome.driver", chromeDriverPath);
 			// using webdrivermanager there is no need to keep path of drivers
 			WebDriverManager.chromedriver().setup();

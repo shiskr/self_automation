@@ -1,9 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite">
+
+	<listeners>
+		<listener
+			class-name="reporting.ExtentReporterNG" />
+	</listeners>
 	<test name="Test">
+
+		<!-- <groups>
+			<run>
+				<include name="memberlogin" />
+				<include name="membershippurchase" />
+				<include name="memberpasswordchange" />
+				<include name="memberdetailsupdate" />
+			</run>
+		</groups> -->
+
 		<classes>
-			<class name="tests.TestSearchScenarios" />
+			<class name="tests.Test1" />
 		</classes>
 
 	</test>

@@ -17,6 +17,15 @@ public class SearchPage extends SearchPage_OR{
 
 		// this loop is used if the searchField is not visible, else it reloads the page
 		for (int i=0; i < 3; i++) {
+			if(wait.until(ExpectedConditions.visibilityOf(adCloseIcon)) != null)
+			{
+				if(adCloseIcon.isDisplayed())
+				{
+					adCloseIcon.click();
+				}
+			}
+		}
+		for (int i=0; i < 3; i++) {
 			if(wait.until(ExpectedConditions.visibilityOf(searchField)) != null)
 			{
 				if (searchField.isDisplayed()) {

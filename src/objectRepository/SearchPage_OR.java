@@ -38,4 +38,7 @@ public class SearchPage_OR extends BasePage{
 
 	@FindBy(xpath="//h1/parent::div/preceding-sibling::img/parent::div")
 	public List<WebElement> searchResult;
+	
+	@FindBy(xpath="//a[@id='bx-close-inside-1010323']")
+	public WebElement adCloseIcon;
 }

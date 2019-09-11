@@ -17,5 +17,10 @@ public class Locations_OR extends BasePage{
 	
 	@FindBy(xpath="//a[@class='facility area__item']//h3[contains(text(),'Blink 125th')]")
 	public WebElement facility125;
+	
+	@FindBy(xpath="//a[@class='facility area__item']//h3[@class='facility__header']")
+	public WebElement locations;
+	
+	public String locationsXpath = "//a[@class='facility area__item']//h3[@class='facility__header']";
 
 }

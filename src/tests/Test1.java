@@ -1,36 +1,39 @@
 package tests;
 
-import org.testng.Assert;
+import java.util.ArrayList;
+
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import utilities.ConfigManager;
 
 public class Test1 extends BaseTest{
 
-	//	@DataProvider(name = "userinfo")
-	//	public static Object[][] catalog()
-	//	{
-	//		return new Object[][]
-	//				{
-	//			{"english", 1, "erjtv", 23423, "2d2c3"},
-	//			{"french", 2, "w4rcwre", 234, "2c234"}
-	//				};
-	//	}
+	@DataProvider(name = "userinfo")
+	public static Object[][] catalog()
+	{
+		return new Object[][]
+				{
+			{"euygx", "xeurgnfu"},
+				};
+	}
 
-	@Test(enabled=false)
-	public void LoginScenario()
+	@Test(enabled=true, groups="memberlogin", dataProvider="userinfo")
+	public void LoginScenario(String email, String password)
 	{
 		loginPage = welcomePage.clickLogin();
-		loginPage.enterEmail("testgreen20190507webprod@mailinator.com");
-		loginPage.enterPassword("Test@1234");
+		loginPage.enterEmail(email);
+		loginPage.enterPassword(password);
 		homePage = loginPage.clickLogin();
 		homePage.clickLogoutLink();
 	}
 
-	@Test(enabled=true)
+	@Test(enabled=true, groups="membershippurchase")
 	public void PurchaseScenario() throws InterruptedException
 	{
 		locationPage = welcomePage.clickLocationsLink();
+		ArrayList<String> locationFacilities = locationPage.getFacilitiesNames();
+		System.out.println(locationFacilities);
 		facilityPage = locationPage.clickFacility();
 		joinFormPage = facilityPage.clickBlueClickHere();
 		joinFormPage.enterMemberDetails();
@@ -42,15 +45,10 @@ public class Test1 extends BaseTest{
 		loginPage = homePage.clickLogoutLink();
 	}
 
-	@Test(enabled=false)
-	public void PTPurchase()
-	{
-		
-	}
-
-	@Test(dependsOnMethods= {"PurchaseScenario"})
+	@Test(groups="memberpasswordchange", dependsOnMethods= {"PurchaseScenario"})
 	public void passwordChange()
 	{
+		loginPage = welcomePage.clickLogin();
 		loginPage.enterEmail(ConfigManager.getProperties().getProperty("email"));
 		loginPage.enterPassword(ConfigManager.getProperties().getProperty("newPassword"));
 		homePage = loginPage.clickLogin();
@@ -59,13 +57,27 @@ public class Test1 extends BaseTest{
 		homePage.enterNewPasswords(ConfigManager.getProperties().getProperty("password"));
 		homePage.clickChangePassword();
 		homePage.verifySuccess();
-		
+		homePage.clickGotIt();
 	}
 
-	@Test(enabled=false)
-	public void membershipDetailsUpdate()
+	@Test(enabled=true, groups="memberdetailsupdate", dependsOnMethods= {"PurchaseScenario"})
+	public void memberDetailsUpdate()
 	{
-		
+		loginPage = welcomePage.clickLogin();
+		loginPage.enterEmail(ConfigManager.getProperties().getProperty("email"));
+		loginPage.enterPassword(ConfigManager.getProperties().getProperty("newPassword"));
+		homePage = loginPage.clickLogin();
+		homePage.clickMemberInfoTab();
+		homePage.clickEditInfo();
+		homePage.changeAddress(ConfigManager.getProperties().getProperty("newaddress"));
+		homePage.changeApartment(ConfigManager.getProperties().getProperty("newapartment"));
+		homePage.changeCity(ConfigManager.getProperties().getProperty("newcity"));
+		homePage.changeState(ConfigManager.getProperties().getProperty("newstate"));
+		homePage.changeZip(ConfigManager.getProperties().getProperty("newzip"));
+		homePage.changePhone(ConfigManager.getProperties().getProperty("newphone"));
+		homePage.changeGender(ConfigManager.getProperties().getProperty("newgender"));
+		homePage.clickSaveChanges();
+		homePage.verifyThankYou();
 	}
 
 

@@ -42,9 +42,40 @@ public class HomePage_OR extends BasePage{
 	@FindBy(xpath="//h3[contains(text(),'Success')]")
 	public WebElement successEl;
 	
+	@FindBy(xpath="//button[contains(text(),'got it')]")
+	public WebElement gotIt;
 	
+	@FindBy(xpath="//div[@class='col-lg-6 col-md-12 col-sm-12 ml-auto d-none d-md-block']//button[contains(text(),'Edit Info')]")
+	public WebElement editInfoBtn;
 	
+	@FindBy(id="basicAddressStreetLine1")
+	public WebElement streetAddressTextBox;
 	
+	@FindBy(id="basicAddressStreetLine2")
+	public WebElement streetAddressApptTextBox2;
 	
+	@FindBy(id="basicAddressCity")
+	public WebElement streetAddressCityTextBox;
+	
+	@FindBy(id="basicAddressState")
+	public WebElement streetAddressState;
+	
+	@FindBy(id="basicAddressZip")
+	public WebElement streetAddressZipTextBox;
+	
+	@FindBy(id="basicPhone")
+	public WebElement phoneTextBox;
+	
+	@FindBy(id="basic-gender")
+	public WebElement genderEl;
+	
+	@FindBy(id="basicDateOfBirth")
+	public WebElement dobEl;
+	
+	@FindBy(xpath="//div[@class='col-lg-6 col-md-12 col-sm-12 ml-auto d-none d-md-block']//button[contains(text(),'Save Changes')]")
+	public WebElement saveChangesBtn;
+	
+	@FindBy(id="toastLabel")
+	public WebElement thankYouLabel;
 	
 }
