@@ -13,7 +13,7 @@ public class WelcomePage extends WelcomePage_OR{
 		PageFactory.initElements(driver, this);
 		wait.until(ExpectedConditions.visibilityOf(locationsButton));
 		wait.until(ExpectedConditions.elementToBeClickable(locationsButton));
-		Thread.sleep(100);
+//		Thread.sleep(100);
 	}
 
 	public LoginPage clickLogin()
@@ -29,6 +29,7 @@ public class WelcomePage extends WelcomePage_OR{
 	//	}
 
 	public LocationsPage clickLocationsLink() throws InterruptedException {
+		wait.until(ExpectedConditions.visibilityOf(locationsButton));
 		locationsButton.click();
 		return new LocationsPage(driver);
 

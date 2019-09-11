@@ -2,9 +2,11 @@ package tests;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 
@@ -25,10 +27,10 @@ import utilities.StartDriver;
 
 public class BaseTest {
 
-//	static Logger logger = Logger.getLogger(BaseTest.class.getName());
+	//	static Logger logger = Logger.getLogger(BaseTest.class.getName());
 
-	 ExtentReports extent;
-	 ExtentTest logger;
+	ExtentReports extent;
+	ExtentTest logger;
 	public static WebDriver driver;
 	SearchPage searchPage;
 	ArticlePage articlePage;
@@ -43,16 +45,36 @@ public class BaseTest {
 	@BeforeSuite
 	public void beforeSuite()
 	{
-
+		ConfigManager.setProperties();
 	}
 	@BeforeClass
 	public void beforeClass()
 	{
-		try {
-			
-			extent = new ExtentReports(System.getProperty("user.dir")+"/test-output/emailable-report.html", true);
+		
+	}
 
+	@BeforeTest
+	public void beforeTest()
+	{
+		try {
+			extent = new ExtentReports(System.getProperty("user.dir")+"/test-output/emailable-report.html", true);
 			ConfigManager.setProperties();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@AfterTest
+	public void afterTest()
+	{
+		driver.quit();
+	}
+	
+	@BeforeMethod
+	public void beforeMethod()
+	{
+		try {
 			driver = new StartDriver().startDriver(ConfigManager.getProperties().getProperty("browser"));
 			driver.get(ConfigManager.getProperties().getProperty("url"));
 			welcomePage = new WelcomePage(driver);
@@ -62,22 +84,16 @@ public class BaseTest {
 		}
 	}
 
-	@BeforeTest
-	public void beforeTest()
+	@AfterMethod
+	public void afterMethod()
 	{
-		
-	}
-
-	@AfterTest
-	public void afterTest()
-	{
-
+		driver.quit();
 	}
 
 	@AfterClass
 	public void afterClass()
 	{
-		driver.quit();
+
 	}
 
 	@AfterSuite

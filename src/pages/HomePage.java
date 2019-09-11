@@ -57,6 +57,57 @@ public class HomePage extends HomePage_OR{
 	public void verifySuccess() {
 		wait.until(ExpectedConditions.visibilityOf(successEl));
 		Assert.assertTrue(successEl.isDisplayed());
-		
+	}
+
+	public void clickGotIt() {
+		wait.until(ExpectedConditions.visibilityOf(gotIt));
+		gotIt.click();
+	}
+
+	public void changeAddress(String newaddress) {
+		streetAddressTextBox.clear();
+		streetAddressTextBox.sendKeys(newaddress);
+	}
+
+	public void changeApartment(String newapartment) {
+		streetAddressApptTextBox2.clear();
+		streetAddressApptTextBox2.sendKeys(newapartment);
+	}
+
+	public void changeCity(String newcity) {
+		streetAddressCityTextBox.clear();
+		streetAddressCityTextBox.sendKeys(newcity);
+	}
+
+	public void changeState(String newstate) {
+		streetAddressState.sendKeys(newstate);
+	}
+
+	public void changeZip(String newzip) {
+		streetAddressZipTextBox.clear();
+		streetAddressZipTextBox.sendKeys(newzip);
+	}
+
+	public void changePhone(String newphone) {
+		phoneTextBox.clear();
+		phoneTextBox.sendKeys(newphone);
+	}
+
+	public void changeGender(String newgender) {
+		genderEl.sendKeys(newgender);
+	}
+
+	public void clickEditInfo() {
+		wait.until(ExpectedConditions.visibilityOf(editInfoBtn));
+		editInfoBtn.click();
+	}
+
+	public void clickSaveChanges() {
+		saveChangesBtn.click();
+	}
+
+	public void verifyThankYou() {
+		wait.until(ExpectedConditions.visibilityOf(thankYouLabel));
+		Assert.assertTrue(thankYouLabel.isDisplayed());;
 	}
 }
