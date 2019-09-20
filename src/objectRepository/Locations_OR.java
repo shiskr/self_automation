@@ -1,5 +1,7 @@
 package objectRepository;
 
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -17,5 +19,8 @@ public class Locations_OR extends BasePage{
 	
 	@FindBy(xpath="//a[@class='facility area__item']//h3[contains(text(),'Blink 125th')]")
 	public WebElement facility125;
+	
+	@FindBy(xpath="//div[@class='desktop-visible']//h3[@class='facility__header']")
+	public List<WebElement> facilities;
 
 }

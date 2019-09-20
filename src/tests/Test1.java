@@ -12,7 +12,7 @@ public class Test1 extends BaseTest{
 	{
 		return new Object[][]
 				{
-			{"euygx", "xeurgnfu"},
+			{"testgray201908_38@mailinator.com", "xeurgnfu"},
 				};
 	}
 
@@ -23,7 +23,11 @@ public class Test1 extends BaseTest{
 		loginPage.enterEmail(email);
 		loginPage.enterPassword(password);
 		homePage = loginPage.clickLogin();
-		homePage.clickLogoutLink();
+		loginPage = homePage.clickLogoutLink();
+		if(loginPage!=null)
+		{
+			System.out.println("Login Page appears");
+		}
 	}
 
 	@Test(enabled=true, groups="membershippurchase")
@@ -32,7 +36,7 @@ public class Test1 extends BaseTest{
 		locationPage = welcomePage.clickLocationsLink();
 		facilityPage = locationPage.clickFacility();
 		joinFormPage = facilityPage.clickBlueClickHere();
-		joinFormPage.enterMemberDetails();
+		joinFormPage = joinFormPage.enterMemberDetails();
 		registrationBridgePage = joinFormPage.enterMemberPaymentDetails();
 		registrationBridgePage.verifyEmail();
 		registrationBridgePage.enterPasswords();
@@ -48,12 +52,12 @@ public class Test1 extends BaseTest{
 		loginPage.enterEmail(ConfigManager.getProperties().getProperty("email"));
 		loginPage.enterPassword(ConfigManager.getProperties().getProperty("newPassword"));
 		homePage = loginPage.clickLogin();
-		homePage.clickMemberInfoTab();
+		homePage = homePage.clickMemberInfoTab();
 		homePage.enterCurrentPassword(ConfigManager.getProperties().getProperty("newPassword"));
 		homePage.enterNewPasswords(ConfigManager.getProperties().getProperty("password"));
-		homePage.clickChangePassword();
+		homePage = homePage.clickChangePassword();
 		homePage.verifySuccess();
-		homePage.clickGotIt();
+		homePage = homePage.clickGotIt();
 	}
 
 	@Test(enabled=true, groups="memberdetailsupdate", dependsOnMethods= {"PurchaseScenario"})
@@ -63,8 +67,8 @@ public class Test1 extends BaseTest{
 		loginPage.enterEmail(ConfigManager.getProperties().getProperty("email"));
 		loginPage.enterPassword(ConfigManager.getProperties().getProperty("newPassword"));
 		homePage = loginPage.clickLogin();
-		homePage.clickMemberInfoTab();
-		homePage.clickEditInfo();
+		homePage = homePage.clickMemberInfoTab();
+		homePage = homePage.clickEditInfo();
 		homePage.changeAddress(ConfigManager.getProperties().getProperty("newaddress"));
 		homePage.changeApartment(ConfigManager.getProperties().getProperty("newapartment"));
 		homePage.changeCity(ConfigManager.getProperties().getProperty("newcity"));
@@ -75,7 +79,14 @@ public class Test1 extends BaseTest{
 		homePage.clickSaveChanges();
 		homePage.verifyThankYou();
 	}
-
+	
+	@Test(enabled=true)
+	public void getfacilitiesNames() throws InterruptedException
+	{
+		locationPage = welcomePage.clickLocationsLink();
+		locationPage.getFacilityNames();
+		
+	}
 
 
 }

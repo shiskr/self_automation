@@ -1,10 +1,17 @@
 package pages;
 
+import java.time.Duration;
+import java.util.function.Function;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 import org.testng.Assert;
 
 import objectRepository.HomePage_OR;
@@ -14,34 +21,48 @@ public class HomePage extends HomePage_OR{
 	public HomePage(WebDriver driver) {
 		super(driver);
 		PageFactory.initElements(driver, this);
-		wait.until(ExpectedConditions.visibilityOf(profilePicture));
+//		wait.until(ExpectedConditions.visibilityOf(profilePicture));
+		
+
+		    WebElement foo = fluentWait.until(
+		        new Function<WebDriver, WebElement>() {
+		            public WebElement apply(WebDriver driver) {
+		                return driver.findElement(By.xpath("//img[@class='img-responsive rounded-circle ']"));
+		            }
+		        }
+		    );
+		    if (foo==null)
+		    {
+		    	return;
+		    }
 	}
-	
+
 	public LoginPage clickLogoutLink()
 	{
-		wait.until(ExpectedConditions.elementToBeClickable(logoutButton));
+		implicitWait.until(ExpectedConditions.elementToBeClickable(logoutButton));
 		JavascriptExecutor js = (JavascriptExecutor)driver;
 		js.executeScript("arguments[0].click();", logoutButton);
 		return new LoginPage(driver);
 	}
-	
+
 	public HomePage clickSkipBtn()
 	{
-		wait.until(ExpectedConditions.elementToBeClickable(skipBtn));
-		
+		implicitWait.until(ExpectedConditions.elementToBeClickable(skipBtn));
+
 		JavascriptExecutor js = (JavascriptExecutor)driver;
 		js.executeScript("arguments[0].click();", skipBtn);
-		
+
 		return new HomePage(driver);
 	}
 
-	public void clickMemberInfoTab() {
-		wait.until(ExpectedConditions.elementToBeClickable(memberInfoTab));
+	public HomePage clickMemberInfoTab() {
+		implicitWait.until(ExpectedConditions.elementToBeClickable(memberInfoTab));
 		memberInfoTab.click();
+		return new HomePage(driver);
 	}
 
 	public void enterCurrentPassword(String password) {
-		wait.until(ExpectedConditions.elementToBeClickable(currentPasswordEl));
+		implicitWait.until(ExpectedConditions.elementToBeClickable(currentPasswordEl));
 		currentPasswordEl.sendKeys(password);
 	}
 
@@ -50,18 +71,20 @@ public class HomePage extends HomePage_OR{
 		confirmPasswordEl.sendKeys(password);
 	}
 
-	public void clickChangePassword() {
+	public HomePage clickChangePassword() {
 		changePasswordEl.click();
+		return new HomePage(driver);
 	}
 
 	public void verifySuccess() {
-		wait.until(ExpectedConditions.visibilityOf(successEl));
+		implicitWait.until(ExpectedConditions.visibilityOf(successEl));
 		Assert.assertTrue(successEl.isDisplayed());
 	}
 
-	public void clickGotIt() {
-		wait.until(ExpectedConditions.visibilityOf(gotIt));
+	public HomePage clickGotIt() {
+		implicitWait.until(ExpectedConditions.visibilityOf(gotIt));
 		gotIt.click();
+		return new HomePage(driver);
 	}
 
 	public void changeAddress(String newaddress) {
@@ -97,9 +120,10 @@ public class HomePage extends HomePage_OR{
 		genderEl.sendKeys(newgender);
 	}
 
-	public void clickEditInfo() {
-		wait.until(ExpectedConditions.visibilityOf(editInfoBtn));
+	public HomePage clickEditInfo() {
+		implicitWait.until(ExpectedConditions.visibilityOf(editInfoBtn));
 		editInfoBtn.click();
+		return new HomePage(driver);
 	}
 
 	public void clickSaveChanges() {
@@ -107,7 +131,7 @@ public class HomePage extends HomePage_OR{
 	}
 
 	public void verifyThankYou() {
-		wait.until(ExpectedConditions.visibilityOf(thankYouLabel));
-		Assert.assertTrue(thankYouLabel.isDisplayed());;
+		implicitWait.until(ExpectedConditions.visibilityOf(thankYouLabel));
+		Assert.assertTrue(thankYouLabel.isDisplayed());
 	}
 }

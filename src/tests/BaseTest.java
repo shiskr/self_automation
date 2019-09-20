@@ -13,14 +13,12 @@ import org.testng.annotations.BeforeTest;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 
-import pages.ArticlePage;
 import pages.FacilityPage;
 import pages.HomePage;
 import pages.JoinFormPage;
 import pages.LocationsPage;
 import pages.LoginPage;
 import pages.RegistrationBridgePage;
-import pages.SearchPage;
 import pages.WelcomePage;
 import utilities.ConfigManager;
 import utilities.StartDriver;
@@ -32,8 +30,6 @@ public class BaseTest {
 	ExtentReports extent;
 	ExtentTest logger;
 	public static WebDriver driver;
-	SearchPage searchPage;
-	ArticlePage articlePage;
 	WelcomePage welcomePage;
 	LoginPage loginPage;
 	HomePage homePage;

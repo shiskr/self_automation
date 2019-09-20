@@ -1,16 +1,18 @@
 package pages;
 
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Action;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 
 import objectRepository.JoinFormPage_OR;
 import utilities.ConfigManager;
@@ -21,11 +23,23 @@ public class JoinFormPage extends JoinFormPage_OR{
 		super(driver);
 		PageFactory.initElements(driver, this);
 		Thread.sleep(100);
-		wait.until(ExpectedConditions.elementToBeClickable(next1El));
-		wait.until(ExpectedConditions.visibilityOf(firstNameEl));
+//		wait.until(ExpectedConditions.elementToBeClickable(next1El));
+//		wait.until(ExpectedConditions.visibilityOf(firstNameEl));
+
+		    WebElement foo = implicitWait.until(
+		        new Function<WebDriver, WebElement>() {
+		            public WebElement apply(WebDriver driver) {
+		                return driver.findElement(By.xpath("//span[contains(text(),'Next')]"));
+		            }
+		        }
+		    );
+		    if (foo==null)
+		    {
+		    	return;
+		    }
 	}
 
-	public void enterMemberDetails() throws InterruptedException {
+	public JoinFormPage enterMemberDetails() throws InterruptedException {
 		enterFirstName(ConfigManager.getProperties().getProperty("firstName"));
 		enterLastName(ConfigManager.getProperties().getProperty("lastName"));
 		enterAddress(ConfigManager.getProperties().getProperty("address"));
@@ -38,10 +52,11 @@ public class JoinFormPage extends JoinFormPage_OR{
 		enterConfirmEmail(ConfigManager.getProperties().getProperty("email"));
 		enterDOB(ConfigManager.getProperties().getProperty("dateofbirth"));
 		selectGender(ConfigManager.getProperties().getProperty("gender"));
-		wait.until(ExpectedConditions.elementToBeClickable(next1El));
+		implicitWait.until(ExpectedConditions.elementToBeClickable(next1El));
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS) ;
 		clickNext1();
 		clickNext1();
+		return new JoinFormPage(driver);
 	}
 
 	private void clickNext1() {
@@ -106,9 +121,9 @@ public class JoinFormPage extends JoinFormPage_OR{
 		monthEl.sendKeys(ConfigManager.getProperties().getProperty("month"));
 		yearEl.sendKeys(ConfigManager.getProperties().getProperty("year"));
 		securityCodeEl.sendKeys(ConfigManager.getProperties().getProperty("securitycode"));
-//		wait.until(ExpectedConditions.elementToBeClickable(agree2El));
+		//		wait.until(ExpectedConditions.elementToBeClickable(agree2El));
 		clickIagree(agree2El);
-		wait.until(ExpectedConditions.elementToBeClickable(purchaseEl));
+		implicitWait.until(ExpectedConditions.elementToBeClickable(purchaseEl));
 		purchaseEl.click();
 		driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS) ;
 		return new RegistrationBridgePage(driver);

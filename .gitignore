@@ -1,0 +1,25 @@
+/bin/
+/target/*
+/test-output/*
+test-output/*
+test-output/old/Default suite/methods-not-run.html
+target/classes/objectRepository/BasePage_OR.class
+test-output/Default suite/Default test.html
+test-output/Default suite/Default test.xml
+.classpath
+.settings/org.eclipse.jdt.core.prefs
+target/classes/META-INF/maven/self_automation/self_automation/pom.properties
+target/classes/META-INF/maven/self_automation/self_automation/pom.xml
+*.class
+test-output/jquery-1.7.1.min.js
+test-output/junitreports/TEST-tests.Test1.xml
+test-output/old/Default suite/classes.html
+test-output/old/Default suite/methods-alphabetical.html
+test-output/old/Default suite/methods-not-run.html
+test-output/old/Default suite/methods.html
+test-output/old/Default suite/testng.xml.html
+test-output/old/Default suite/toc.html
+test-output/testng-reports.css
+test-output/testng-reports.js
+test-output/testng-results.xml
+/target/
