@@ -36,6 +36,7 @@ public class LocationsPage extends Locations_OR{
 	}
 
 	public FacilityPage clickFacility() throws InterruptedException {
+		findElementByWait(driver, By.xpath("//div[@class='desktop-visible']//h3[@class='facility__header']"));
 		facility125.click();
 		return new FacilityPage(driver);
 	}

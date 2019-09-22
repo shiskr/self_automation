@@ -6,7 +6,6 @@
       <class name="tests.Test1">
         <methods>
           <include name="beforeClass"/>
-          <include name="PurchaseScenario"/>
           <include name="beforeMethod"/>
           <include name="afterTest"/>
           <include name="beforeSuite"/>
@@ -14,6 +13,7 @@
           <include name="afterSuite"/>
           <include name="beforeTest"/>
           <include name="afterMethod"/>
+          <include name="getfacilitiesNames"/>
         </methods>
       </class> <!-- tests.Test1 -->
     </classes>

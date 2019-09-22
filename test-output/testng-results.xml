@@ -1,70 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="4" total="5" passed="0" failed="1" skipped="0">
+<testng-results ignored="4" total="5" passed="0" failed="0" skipped="1">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2019-09-19T17:26:13Z" name="Default suite" finished-at="2019-09-19T17:26:48Z" duration-ms="35017">
+  <suite started-at="2019-09-22T08:42:25Z" name="Default suite" finished-at="2019-09-22T08:44:38Z" duration-ms="132591">
     <groups>
-      <group name="membershippurchase">
-        <method signature="Test1.PurchaseScenario()[pri:0, instance:tests.Test1@5f8edcc5]" name="PurchaseScenario" class="tests.Test1"/>
-      </group> <!-- membershippurchase -->
     </groups>
-    <test started-at="2019-09-19T17:26:13Z" name="Default test" finished-at="2019-09-19T17:26:48Z" duration-ms="35017">
+    <test started-at="2019-09-22T08:42:25Z" name="Default test" finished-at="2019-09-22T08:44:38Z" duration-ms="132591">
       <class name="tests.Test1">
-        <test-method is-config="true" signature="beforeSuite()[pri:0, instance:tests.Test1@5f8edcc5]" started-at="2019-09-19T17:26:13Z" name="beforeSuite" finished-at="2019-09-19T17:26:13Z" duration-ms="9" status="PASS">
+        <test-method is-config="true" signature="beforeSuite()[pri:0, instance:tests.Test1@1d8bd0de]" started-at="2019-09-22T08:42:25Z" name="beforeSuite" finished-at="2019-09-22T08:42:25Z" duration-ms="9" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeSuite -->
-        <test-method is-config="true" signature="beforeTest()[pri:0, instance:tests.Test1@5f8edcc5]" started-at="2019-09-19T17:26:13Z" name="beforeTest" finished-at="2019-09-19T17:26:13Z" duration-ms="177" status="PASS">
+        <test-method is-config="true" signature="beforeTest()[pri:0, instance:tests.Test1@1d8bd0de]" started-at="2019-09-22T08:42:25Z" name="beforeTest" finished-at="2019-09-22T08:42:25Z" duration-ms="189" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeTest -->
-        <test-method is-config="true" signature="beforeClass()[pri:0, instance:tests.Test1@5f8edcc5]" started-at="2019-09-19T17:26:13Z" name="beforeClass" finished-at="2019-09-19T17:26:13Z" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="beforeClass()[pri:0, instance:tests.Test1@1d8bd0de]" started-at="2019-09-22T08:42:25Z" name="beforeClass" finished-at="2019-09-22T08:42:25Z" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeClass -->
-        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:tests.Test1@5f8edcc5]" started-at="2019-09-19T17:26:13Z" name="beforeMethod" finished-at="2019-09-19T17:26:30Z" duration-ms="16653" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- beforeMethod -->
-        <test-method signature="PurchaseScenario()[pri:0, instance:tests.Test1@5f8edcc5]" started-at="2019-09-19T17:26:30Z" name="PurchaseScenario" finished-at="2019-09-19T17:26:48Z" duration-ms="18020" status="FAIL">
-          <exception class="org.openqa.selenium.ElementClickInterceptedException">
-            <message>
-              <![CDATA[element click intercepted: Element <ins class="text-uppercase BlinkFitness_Strong">...</ins> is not clickable at point (200, 643). Other element would receive the click: <div class="hidden loading-text" id="loading-spinner-text" style="z-index: 9999;">...</div>
-  (Session info: chrome=77.0.3865.90)
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'ndi-lap-735', ip: 'fe80:0:0:0:ce8:a484:89e7:6a58%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.14.6', java.version: '11.0.1'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 77.0.3865.90, chrome: {chromedriverVersion: 77.0.3865.40 (f484704e052e0..., userDataDir: /var/folders/zz/ld_wvw017m3...}, goog:chromeOptions: {debuggerAddress: localhost:50660}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: MAC, platformName: MAC, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
-Session ID: b3ab838359b55520a0c3413929065218]]>
-            </message>
+        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:tests.Test1@1d8bd0de]" started-at="2019-09-22T08:42:25Z" name="beforeMethod" finished-at="2019-09-22T08:44:38Z" duration-ms="132226" status="FAIL">
+          <exception class="java.lang.ExceptionInInitializerError">
             <full-stacktrace>
-              <![CDATA[org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element <ins class="text-uppercase BlinkFitness_Strong">...</ins> is not clickable at point (200, 643). Other element would receive the click: <div class="hidden loading-text" id="loading-spinner-text" style="z-index: 9999;">...</div>
-  (Session info: chrome=77.0.3865.90)
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'ndi-lap-735', ip: 'fe80:0:0:0:ce8:a484:89e7:6a58%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.14.6', java.version: '11.0.1'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 77.0.3865.90, chrome: {chromedriverVersion: 77.0.3865.40 (f484704e052e0..., userDataDir: /var/folders/zz/ld_wvw017m3...}, goog:chromeOptions: {debuggerAddress: localhost:50660}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: MAC, platformName: MAC, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
-Session ID: b3ab838359b55520a0c3413929065218
-at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
-at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
-at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
-at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
-at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
-at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
-at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:285)
-at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:84)
-at pages.FacilityPage.clickBlueClickHere(FacilityPage.java:60)
-at tests.Test1.PurchaseScenario(Test1.java:38)
+              <![CDATA[java.lang.ExceptionInInitializerError
+at tests.BaseTest.beforeMethod(BaseTest.java:76)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 at java.base/java.lang.reflect.Method.invoke(Method.java:566)
 at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
-at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:59)
+at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:458)
+at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:222)
+at org.testng.internal.Invoker.invokeMethod(Invoker.java:523)
 at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
 at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
 at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
@@ -84,25 +52,76 @@ at org.testng.TestNG.run(TestNG.java:1017)
 at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
 at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+Caused by: java.lang.NullPointerException
+at java.base/java.util.Objects.requireNonNull(Objects.java:221)
+at org.openqa.selenium.support.ui.FluentWait.<init>(FluentWait.java:106)
+at org.openqa.selenium.support.ui.FluentWait.<init>(FluentWait.java:97)
+at pages.BasePage.<clinit>(BasePage.java:24)
+... 29 more
 ]]>
             </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.ElementClickInterceptedException -->
+          </exception> <!-- java.lang.ExceptionInInitializerError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- PurchaseScenario -->
-        <test-method is-config="true" signature="afterMethod()[pri:0, instance:tests.Test1@5f8edcc5]" started-at="2019-09-19T17:26:48Z" name="afterMethod" finished-at="2019-09-19T17:26:48Z" duration-ms="148" status="PASS">
+        </test-method> <!-- beforeMethod -->
+        <test-method signature="getfacilitiesNames()[pri:0, instance:tests.Test1@1d8bd0de]" started-at="2019-09-22T08:44:38Z" name="getfacilitiesNames" finished-at="2019-09-22T08:44:38Z" duration-ms="0" status="SKIP">
+          <exception class="java.lang.ExceptionInInitializerError">
+            <full-stacktrace>
+              <![CDATA[java.lang.ExceptionInInitializerError
+at tests.BaseTest.beforeMethod(BaseTest.java:76)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:59)
+at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:458)
+at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:222)
+at org.testng.internal.Invoker.invokeMethod(Invoker.java:523)
+at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+Caused by: java.lang.NullPointerException
+at java.base/java.util.Objects.requireNonNull(Objects.java:221)
+at org.openqa.selenium.support.ui.FluentWait.<init>(FluentWait.java:106)
+at org.openqa.selenium.support.ui.FluentWait.<init>(FluentWait.java:97)
+at pages.BasePage.<clinit>(BasePage.java:24)
+... 29 more
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.ExceptionInInitializerError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getfacilitiesNames -->
+        <test-method is-config="true" signature="afterMethod()[pri:0, instance:tests.Test1@1d8bd0de]" started-at="2019-09-22T08:44:38Z" name="afterMethod" finished-at="2019-09-22T08:44:38Z" duration-ms="0" status="SKIP">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method is-config="true" signature="afterClass()[pri:0, instance:tests.Test1@5f8edcc5]" started-at="2019-09-19T17:26:48Z" name="afterClass" finished-at="2019-09-19T17:26:48Z" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="afterClass()[pri:0, instance:tests.Test1@1d8bd0de]" started-at="2019-09-22T08:44:38Z" name="afterClass" finished-at="2019-09-22T08:44:38Z" duration-ms="0" status="SKIP">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterClass -->
-        <test-method is-config="true" signature="afterTest()[pri:0, instance:tests.Test1@5f8edcc5]" started-at="2019-09-19T17:26:48Z" name="afterTest" finished-at="2019-09-19T17:26:48Z" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="afterTest()[pri:0, instance:tests.Test1@1d8bd0de]" started-at="2019-09-22T08:44:38Z" name="afterTest" finished-at="2019-09-22T08:44:38Z" duration-ms="134" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterTest -->
-        <test-method is-config="true" signature="afterSuite()[pri:0, instance:tests.Test1@5f8edcc5]" started-at="2019-09-19T17:26:48Z" name="afterSuite" finished-at="2019-09-19T17:26:48Z" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="afterSuite()[pri:0, instance:tests.Test1@1d8bd0de]" started-at="2019-09-22T08:44:38Z" name="afterSuite" finished-at="2019-09-22T08:44:38Z" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterSuite -->
