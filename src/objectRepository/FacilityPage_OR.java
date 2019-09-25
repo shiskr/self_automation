@@ -21,6 +21,4 @@ public class FacilityPage_OR extends BasePage{
 	
 	@FindBy(xpath="//p[contains(text(),'Blue')]/ancestor::div[@class='club-plan-header']/following-sibling::div[@class='club-plan-inner']//ins[contains(text(),'Click Here')]")
 	public WebElement blueClickHere;
-	
-	
 }

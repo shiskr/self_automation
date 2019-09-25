@@ -46,27 +46,10 @@ public class BaseTest {
 	@BeforeClass
 	public void beforeClass()
 	{
-		
+
 	}
 
-	@BeforeTest
-	public void beforeTest()
-	{
-		try {
-			extent = new ExtentReports(System.getProperty("user.dir")+"/test-output/emailable-report.html", true);
-			ConfigManager.setProperties();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	@AfterTest
-	public void afterTest()
-	{
-		driver.quit();
-	}
-	
+	// before every test method
 	@BeforeMethod
 	public void beforeMethod()
 	{
@@ -79,6 +62,19 @@ public class BaseTest {
 			e.printStackTrace();
 		}
 	}
+
+	@BeforeTest
+	public void beforeTest()
+	{
+	}
+
+	@AfterTest
+	public void afterTest()
+	{
+		driver.quit();
+	}
+
+
 
 	@AfterMethod
 	public void afterMethod()

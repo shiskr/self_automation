@@ -8,11 +8,11 @@ import utilities.ConfigManager;
 public class Test1 extends BaseTest{
 
 	@DataProvider(name = "userinfo")
-	public static Object[][] catalog()
+	public static Object[][] userinfo()
 	{
 		return new Object[][]
 				{
-			{"testgray201908_38@mailinator.com", "xeurgnfu"},
+			{"testblue20190820@mailinator.com", "Test@123"},
 				};
 	}
 
@@ -21,13 +21,9 @@ public class Test1 extends BaseTest{
 	{
 		loginPage = welcomePage.clickLogin();
 		loginPage.enterEmail(email);
-		loginPage.enterPassword(password);
+		loginPage.enterPassword(password);	
 		homePage = loginPage.clickLogin();
 		loginPage = homePage.clickLogoutLink();
-		if(loginPage!=null)
-		{
-			System.out.println("Login Page appears");
-		}
 	}
 
 	@Test(enabled=true, groups="membershippurchase")
@@ -36,7 +32,7 @@ public class Test1 extends BaseTest{
 		locationPage = welcomePage.clickLocationsLink();
 		facilityPage = locationPage.clickFacility();
 		joinFormPage = facilityPage.clickBlueClickHere();
-		joinFormPage = joinFormPage.enterMemberDetails();
+		joinFormPage.enterMemberDetails();
 		registrationBridgePage = joinFormPage.enterMemberPaymentDetails();
 		registrationBridgePage.verifyEmail();
 		registrationBridgePage.enterPasswords();
@@ -45,7 +41,7 @@ public class Test1 extends BaseTest{
 		loginPage = homePage.clickLogoutLink();
 	}
 
-	@Test(groups="memberpasswordchange", dependsOnMethods= {"PurchaseScenario"})
+	@Test(enabled=true, groups="memberpasswordchange", dependsOnMethods= {"PurchaseScenario"})
 	public void passwordChange()
 	{
 		loginPage = welcomePage.clickLogin();
@@ -76,16 +72,16 @@ public class Test1 extends BaseTest{
 		homePage.changeZip(ConfigManager.getProperties().getProperty("newzip"));
 		homePage.changePhone(ConfigManager.getProperties().getProperty("newphone"));
 		homePage.changeGender(ConfigManager.getProperties().getProperty("newgender"));
-		homePage.clickSaveChanges();
+		homePage = homePage.clickSaveChanges();
 		homePage.verifyThankYou();
 	}
-	
+
 	@Test(enabled=true)
 	public void getfacilitiesNames() throws InterruptedException
 	{
 		locationPage = welcomePage.clickLocationsLink();
 		locationPage.getFacilityNames();
-		
+
 	}
 
 

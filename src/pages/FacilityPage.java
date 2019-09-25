@@ -1,29 +1,22 @@
 package pages;
 
-import java.time.Duration;
 import java.util.function.Function;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Wait;
 
 import objectRepository.FacilityPage_OR;
 
 public class FacilityPage extends FacilityPage_OR{
 
+	static Logger logger = Logger.getLogger(FacilityPage.class.getName());
+
 	public FacilityPage(WebDriver driver) throws InterruptedException {
 		super(driver);
 		PageFactory.initElements(driver, this);
-		//		Thread.sleep(10000);
-		//		wait.until(ExpectedConditions.visibilityOf(headerTitle));
-
-
-
 		WebElement foo = fluentWait.until(
 				new Function<WebDriver, WebElement>() {
 					public WebElement apply(WebDriver driver) {
@@ -43,8 +36,6 @@ public class FacilityPage extends FacilityPage_OR{
 	}
 
 	public JoinFormPage clickBlueClickHere() throws InterruptedException {
-
-
 		WebElement foo = fluentWait.until(
 				new Function<WebDriver, WebElement>() {
 					public WebElement apply(WebDriver driver) {
@@ -52,11 +43,6 @@ public class FacilityPage extends FacilityPage_OR{
 					}
 				}
 				);
-		if (foo==null)
-		{
-			return null;
-		}
-
 		foo.click();
 		return new JoinFormPage(driver);
 	}

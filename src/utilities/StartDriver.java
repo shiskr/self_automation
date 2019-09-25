@@ -10,7 +10,7 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.safari.SafariDriver;
 
-import io.github.bonigarcia.wdm.WebDriverManager;;
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class StartDriver {
 
@@ -40,19 +40,6 @@ public class StartDriver {
 			// using webdrivermanager there is no need to keep path of drivers
 			WebDriverManager.chromedriver().setup();
 
-
-			// legacy process
-			//			driver = new ChromeDriver(chromeDC);
-
-
-			//			 new process
-			//						ChromeDriverService service = new ChromeDriverService.Builder()
-			//								.usingDriverExecutable(new File(chromeDriverPath))
-			//								.usingAnyFreePort()
-			//								.build();
-			//						driver = new ChromeDriver(service, chromeDC);
-
-
 			// newest process
 			ChromeDriverService service = new ChromeDriverService.Builder()
 					//					.usingDriverExecutable(new File(chromeDriverPath))
@@ -66,8 +53,6 @@ public class StartDriver {
 			firefoxOptions = new FirefoxOptions(firefoxDC);
 			firefoxDC.setCapability("acceptInsecureCerts", true); 
 
-			// System.setProperty("webdriver.gecko.driver", firefoxDriverPath);
-			// using webdrivermanager there is no need to keep path of drivers
 			WebDriverManager.firefoxdriver().setup();
 			firefoxOptions.merge(firefoxDC);
 			driver = new FirefoxDriver(firefoxOptions);
@@ -76,14 +61,6 @@ public class StartDriver {
 
 		case "safari":
 			driver = new SafariDriver();
-			break;
-
-		case "android":
-
-			break;
-
-		case "ios":
-
 			break;
 
 		default:
