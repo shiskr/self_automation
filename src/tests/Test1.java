@@ -26,7 +26,7 @@ public class Test1 extends BaseTest{
 		loginPage = homePage.clickLogoutLink();
 	}
 
-	@Test(enabled=true, groups="membershippurchase")
+	@Test(enabled=false, groups="membershippurchase")
 	public void PurchaseScenario() throws InterruptedException
 	{
 		locationPage = welcomePage.clickLocationsLink();
@@ -41,7 +41,7 @@ public class Test1 extends BaseTest{
 		loginPage = homePage.clickLogoutLink();
 	}
 
-	@Test(enabled=true, groups="memberpasswordchange", dependsOnMethods= {"PurchaseScenario"})
+	@Test(enabled=false, groups="memberpasswordchange", dependsOnMethods= {"PurchaseScenario"})
 	public void passwordChange()
 	{
 		loginPage = welcomePage.clickLogin();
@@ -56,7 +56,7 @@ public class Test1 extends BaseTest{
 		homePage = homePage.clickGotIt();
 	}
 
-	@Test(enabled=true, groups="memberdetailsupdate", dependsOnMethods= {"PurchaseScenario"})
+	@Test(enabled=false, groups="memberdetailsupdate", dependsOnMethods= {"PurchaseScenario"})
 	public void memberDetailsUpdate()
 	{
 		loginPage = welcomePage.clickLogin();
