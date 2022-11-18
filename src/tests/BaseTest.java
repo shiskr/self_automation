@@ -8,15 +8,13 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 
-import pages.ArticlePage;
-import pages.SearchPage;
+import pages.WelcomePage;
 import utilities.ConfigManager;
 import utilities.StartDriver;
 
 public class BaseTest {
 	public static WebDriver driver;
-	SearchPage searchPage;
-	ArticlePage articlePage;
+	WelcomePage welcomePage;
 
 	@BeforeSuite
 	public void beforeSuite()
@@ -30,7 +28,7 @@ public class BaseTest {
 			ConfigManager.setProperties();
 			driver = new StartDriver().startDriver(ConfigManager.getProperties().getProperty("browser"));
 			driver.get(ConfigManager.getProperties().getProperty("url"));
-			searchPage = new SearchPage(driver);
+			welcomePage = new WelcomePage(driver);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

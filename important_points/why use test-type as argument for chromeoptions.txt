@@ -1,7 +1,0 @@
-It avoids creating application stubs in ~/Applications on mac.
-It makes exit codes slightly more correct
-windows navigation jumplists arent updated https://bugs.chromium.org/p/chromium/issues/detail?id=389375
-doesn't start some chrome StartPageService
-disables initializing chromecast service
-"Component extensions with background pages are not enabled during tests because they generate a lot of background behavior that can interfere."
-when quitting the browser, it disables additional checks that may stop that quitting process. (like unsaved form modifications or unhandled profile notifications..)

@@ -6,7 +6,7 @@
     <groups>
     </groups>
     <test started-at="2019-01-08T19:53:01Z" name="Default test" finished-at="2019-01-08T19:53:02Z" duration-ms="912">
-      <class name="tests.Test1">
+      <class name="tests.SearchTest">
         <test-method is-config="true" signature="beforeSuite()[pri:0, instance:tests.Test1@1e178745]" started-at="2019-01-08T19:53:01Z" name="beforeSuite" finished-at="2019-01-08T19:53:01Z" duration-ms="7" status="PASS">
           <reporter-output>
           </reporter-output>
@@ -35,7 +35,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterSuite -->
-      </class> <!-- tests.Test1 -->
+      </class> <!-- tests.SearchTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

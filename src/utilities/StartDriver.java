@@ -2,92 +2,42 @@ package utilities;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeDriverService;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.safari.SafariDriver;
-
-import io.github.bonigarcia.wdm.WebDriverManager;;
 
 public class StartDriver {
 
-	static WebDriver driver;
-	static ChromeOptions chromeOptions;
-	static FirefoxOptions firefoxOptions;
-	static String osname = System.getProperty("os.name");
+    static WebDriver driver;
 
-	public WebDriver startDriver(String browser)
-	{
-		switch(browser)
-		{
-		case "chrome":
-			chromeOptions = new ChromeOptions();
-			chromeOptions.addArguments("disable-infobars");
-			//
-			//			// Hide the automation toolbar warning
-			chromeOptions.addArguments("test-type");
-			//			// disabling popup on browser
-			chromeOptions.addArguments("disable-popup-blocking");
-			//			// starting browser in maximized screen
-			chromeOptions.addArguments("--start-maximized");
+    public WebDriver startDriver(String browser)
+    {
+        switch(browser)
+        {
+            case "chrome":
+                driver = new ChromeDriver();
+                break;
 
-			// System.setProperty("webdriver.chrome.driver", chromeDriverPath);
-			// using webdrivermanager there is no need to keep path of drivers
-			WebDriverManager.chromedriver().setup();
+            case "firefox":
+                driver = new FirefoxDriver();
+                break;
 
+            case "safari":
+                driver = new SafariDriver();
+                break;
 
-			// legacy process
-			//			driver = new ChromeDriver(chromeDC);
+            case "android":
 
+                break;
 
-			//			 new process
-			//						ChromeDriverService service = new ChromeDriverService.Builder()
-			//								.usingDriverExecutable(new File(chromeDriverPath))
-			//								.usingAnyFreePort()
-			//								.build();
-			//						driver = new ChromeDriver(service, chromeDC);
+            case "ios":
 
+                break;
 
-			// newest process
-			ChromeDriverService service = new ChromeDriverService.Builder()
-					//					.usingDriverExecutable(new File(chromeDriverPath))
-					.usingAnyFreePort()
-					.build();
-			driver = new ChromeDriver(service, chromeOptions);
-			break;
-
-		case "firefox":
-			DesiredCapabilities firefoxDC = DesiredCapabilities.firefox();
-			firefoxOptions = new FirefoxOptions(firefoxDC);
-			firefoxDC.setCapability("acceptInsecureCerts", true); 
-
-			// System.setProperty("webdriver.gecko.driver", firefoxDriverPath);
-			// using webdrivermanager there is no need to keep path of drivers
-			WebDriverManager.firefoxdriver().setup();
-			firefoxOptions.merge(firefoxDC);
-			driver = new FirefoxDriver(firefoxOptions);
-
-			break;
-
-		case "safari":
-			driver = new SafariDriver();
-			break;
-
-		case "android":
-
-			break;
-
-		case "ios":
-
-			break;
-
-		default:
-			System.out.println("None of the DeviceType Case Matched");
-			return null;
-		}
-		return driver;
-	}
+            default:
+                System.out.println("None of the DeviceType Case Matched");
+                return null;
+        }
+        return driver;
+    }
 
 }
