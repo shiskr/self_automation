@@ -17,9 +17,9 @@ public class WelcomePage extends WelcomePage_OR {
 
 		// this loop is used if the searchField is not visible, else it reloads the page
 		for (int i=0; i < 3; i++) {
-			if(wait.until(ExpectedConditions.visibilityOf(driver.findElement(searchBtn))) != null)
+			if(wait.until(ExpectedConditions.visibilityOf(searchBtn)) != null)
 			{
-				if (driver.findElement(searchField).isDisplayed()) {
+				if (searchField.isDisplayed()) {
 					break;
 				}
 				else
@@ -33,22 +33,22 @@ public class WelcomePage extends WelcomePage_OR {
 	public void clickSearch()
 	{
 		logger.info("Clicking on Search Button");
-		driver.findElement(searchBtn).click();
+		searchBtn.click();
 	}
 
 	public  void enterTextSearchField(String keyword)
 	{
 		logger.info("Sending text to Search Field" + keyword);
-		driver.findElement(searchField).clear();
-		driver.findElement(searchField).sendKeys(keyword);
+		searchField.clear();
+		searchField.sendKeys(keyword);
 	}
 
 	public void hitSearch(String keyword)
 	{
 		logger.info("Sending text to Search Field" + keyword);
-		driver.findElement(searchField).clear();
-		driver.findElement(searchField).sendKeys(keyword);
-		driver.findElement(searchBtn).click();
+		searchField.clear();
+		searchField.sendKeys(keyword);
+		searchBtn.click();
 	}
 
 }

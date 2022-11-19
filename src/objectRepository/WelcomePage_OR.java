@@ -14,7 +14,7 @@ public class WelcomePage_OR extends BasePage{
 		this.driver = driver;
 		// TODO Auto-generated constructor stub
 	}
-	public By searchBtn = By.id("search_button_homepage");
-	public By searchField = By.id("search_form_input_homepage");
+	public WebElement searchBtn = driver.findElement(By.id("search_button_homepage"));
+	public WebElement searchField = driver.findElement(By.id("search_form_input_homepage"));
 
 }
