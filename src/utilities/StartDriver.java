@@ -1,93 +1,62 @@
 package utilities;
 
+import java.time.Duration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.safari.SafariDriver;
-
-import io.github.bonigarcia.wdm.WebDriverManager;;
+import org.openqa.selenium.safari.SafariOptions;
 
 public class StartDriver {
 
-	static WebDriver driver;
-	static ChromeOptions chromeOptions;
-	static FirefoxOptions firefoxOptions;
-	static String osname = System.getProperty("os.name");
+	private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
-	public WebDriver startDriver(String browser)
-	{
-		switch(browser)
-		{
-		case "chrome":
-			chromeOptions = new ChromeOptions();
-			chromeOptions.addArguments("disable-infobars");
-			//
-			//			// Hide the automation toolbar warning
-			chromeOptions.addArguments("test-type");
-			//			// disabling popup on browser
-			chromeOptions.addArguments("disable-popup-blocking");
-			//			// starting browser in maximized screen
-			chromeOptions.addArguments("--start-maximized");
+	public static WebDriver startDriver(String browser) {
 
-			// System.setProperty("webdriver.chrome.driver", chromeDriverPath);
-			// using webdrivermanager there is no need to keep path of drivers
-			WebDriverManager.chromedriver().setup();
+		switch (browser.toLowerCase()) {
 
+			case "chrome":
+				ChromeOptions chromeOptions = new ChromeOptions();
+				chromeOptions.addArguments("--start-maximized");
+				chromeOptions.addArguments("--disable-notifications");
+				chromeOptions.addArguments("--remote-allow-origins=*");
+				driver.set(new ChromeDriver(chromeOptions));
+				break;
 
-			// legacy process
-			//			driver = new ChromeDriver(chromeDC);
+			case "firefox":
+				FirefoxOptions firefoxOptions = new FirefoxOptions();
+				firefoxOptions.addArguments("--width=1920");
+				firefoxOptions.addArguments("--height=1080");
+				driver.set(new FirefoxDriver(firefoxOptions));
+				break;
 
+			case "safari":
+				SafariOptions safariOptions = new SafariOptions();
+				driver.set(new SafariDriver(safariOptions));
+				break;
 
-			//			 new process
-			//						ChromeDriverService service = new ChromeDriverService.Builder()
-			//								.usingDriverExecutable(new File(chromeDriverPath))
-			//								.usingAnyFreePort()
-			//								.build();
-			//						driver = new ChromeDriver(service, chromeDC);
-
-
-			// newest process
-			ChromeDriverService service = new ChromeDriverService.Builder()
-					//					.usingDriverExecutable(new File(chromeDriverPath))
-					.usingAnyFreePort()
-					.build();
-			driver = new ChromeDriver(service, chromeOptions);
-			break;
-
-		case "firefox":
-			DesiredCapabilities firefoxDC = DesiredCapabilities.firefox();
-			firefoxOptions = new FirefoxOptions(firefoxDC);
-			firefoxDC.setCapability("acceptInsecureCerts", true); 
-
-			// System.setProperty("webdriver.gecko.driver", firefoxDriverPath);
-			// using webdrivermanager there is no need to keep path of drivers
-			WebDriverManager.firefoxdriver().setup();
-			firefoxOptions.merge(firefoxDC);
-			driver = new FirefoxDriver(firefoxOptions);
-
-			break;
-
-		case "safari":
-			driver = new SafariDriver();
-			break;
-
-		case "android":
-
-			break;
-
-		case "ios":
-
-			break;
-
-		default:
-			System.out.println("None of the DeviceType Case Matched");
-			return null;
+			default:
+				throw new IllegalArgumentException(
+						"Invalid browser value: " + browser +
+								". Supported: chrome | firefox | safari");
 		}
-		return driver;
+
+		getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		getDriver().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
+
+		return getDriver();
 	}
 
+	public static WebDriver getDriver() {
+		return driver.get();
+	}
+
+	public static void quitDriver() {
+		if (driver.get() != null) {
+			driver.get().quit();
+			driver.remove();
+		}
+	}
 }
